@@ -1,0 +1,44 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+body { background: #08b9d4; color: #fff; }
+[hidden] { display: none !important; }
+#viewport {
+  width: 100%;
+  height: 100vh;
+  height: var(--viewport-height, 100dvh);
+  padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#game { position: relative; width: 100%; height: 100%; min-height: 0; overflow: hidden; background: #08b9d4; }
+#unity-canvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; -webkit-user-select: none; user-select: none; }
+/* Portrait phones use all available width, including tall 19.5:9 screens.
+   Wide windows/tablets/landscape keep the game portrait without stretching it. */
+@media (min-aspect-ratio: 3/4) {
+  body { background: #182b3b; }
+  #game {
+    width: calc((var(--viewport-height, 100vh) - var(--safe-top) - var(--safe-bottom)) * 9 / 16);
+    max-width: 100%;
+  }
+}
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; background: radial-gradient(ellipse at center, #36d4e3, #079ebc); }
+.app-icon { border-radius: 24px; box-shadow: 0 8px 28px #00475c40; }
+h1 { margin: 0; font-size: clamp(22px, 6vw, 32px); }
+p { margin: 0; line-height: 1.5; }
+progress { width: min(240px, 80%); height: 12px; border: 0; border-radius: 12px; overflow: hidden; background: #ffffff40; accent-color: #ffe75a; }
+progress::-webkit-progress-bar { background: #ffffff40; }
+progress::-webkit-progress-value { background: #ffe75a; border-radius: 12px; }
+progress::-moz-progress-bar { background: #ffe75a; border-radius: 12px; }
+button { border: 0; border-radius: 16px; padding: 14px 22px; color: #26344c; background: #ffe75a; font: inherit; font-weight: 700; cursor: pointer; }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+#offline-status { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px; border-radius: 12px; background: #182b3be8; font-size: 13px; text-align: center; pointer-events: none; }
+noscript { position: absolute; inset: 20px; }

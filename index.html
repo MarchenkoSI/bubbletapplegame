@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#08b9d4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BubbleTapple">
+  <title>BubbleTapple</title>
+  <link rel="icon" type="image/png" href="TemplateData/icon-192.png">
+  <link rel="apple-touch-icon" href="TemplateData/icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="TemplateData/style.css">
+</head>
+<body>
+  <main id="viewport">
+    <section id="game" aria-label="BubbleTapple">
+      <canvas id="unity-canvas" width="540" height="960" tabindex="0" aria-label="Игровое поле"></canvas>
+      <div id="loading" class="overlay" role="status" aria-live="polite">
+        <img class="app-icon" src="TemplateData/icon-192.png" alt="" width="96" height="96">
+        <h1>BubbleTapple</h1>
+        <p id="loading-label">Загружаем игру…</p>
+        <progress id="progress" max="1" value="0" aria-label="Загрузка игры"></progress>
+      </div>
+      <div id="error" class="overlay" role="alert" hidden>
+        <h1>Не удалось запустить игру</h1>
+        <p id="error-message">Проверьте подключение и попробуйте ещё раз.</p>
+        <button id="retry" type="button">Попробовать снова</button>
+      </div>
+      <p id="offline-status" role="status" hidden>Игра готова к запуску без интернета</p>
+      <noscript>Для запуска игры включите JavaScript в браузере.</noscript>
+    </section>
+  </main>
+  <script>
+    window.BubbleTappleBuild = {
+      loaderUrl: "Build/819b92febf9d27d5c802e84fc386fb2e.loader.js",
+      config: {
+        arguments: [],
+        dataUrl: "Build/67ab67efb8d597aff1d00b4943b817a0.data.unityweb",
+        frameworkUrl: "Build/dd0f1e769c763068c4c3f53a935e2c1d.framework.js.unityweb",
+        codeUrl: "Build/c9966f2247e0ee997c611759b56e5570.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DistantGames",
+        productName: "BubbleTapple",
+        productVersion: "0.1"
+      }
+    };
+  </script>
+  <script src="TemplateData/app.js" defer></script>
+</body>
+</html>
